@@ -1,0 +1,43 @@
+class Graph{
+    
+    int V;
+    int E;
+    int[][] adj;
+    
+    public Graph(int nodes){
+        this.V = nodes;
+        this.E = 0;
+        this.adj = new int[nodes][nodes];
+    }
+    
+    public void addEdges(int u, int v){
+        this.adj[u][v] = 1;
+        this.adj[v][u] = 1;
+        E++;
+    }
+    
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(V + " vertices, " + E + " edges\n" );
+        for(int v = 0; v < V; v++){
+            sb.append(v + ": ");
+            for(int w : adj[v]){
+                sb.append(w + " ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Graph g = new Graph(4);
+		g.addEdges(0, 1);
+		g.addEdges(1, 2);
+		g.addEdges(2, 3);
+		g.addEdges(3, 0);
+		System.out.println(g);
+	}
+}
